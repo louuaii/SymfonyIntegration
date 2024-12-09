@@ -53,7 +53,7 @@
 				<strong>Avatar:</strong>
 			</p>
 			{% if user.avatar %}
-				<img class="img-profile " src="{{ user.getAvatarUrl | imagine_filter('squared_thumbnail_small') }}" alt="{{ app.user.name }}">
+				<img class="img-profile " src="{{ user.getAvatarUrl  }}" style="width: 100px; height: 100px;" alt="{{ app.user.name }}">
 			{% else %}
 				<img class="img-profile rounded-circle" src="{{ user.getAvatarUrl(150) }}" alt="{{ app.user.name }}">
 			{% endif %}

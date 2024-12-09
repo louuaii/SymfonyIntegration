@@ -31,7 +31,7 @@
 					{% if app.user %}
 						<a class="nav-link d-flex align-items-center dropdown-toggle" href="#" id="customAccountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							{% if app.user.avatar %}
-								<img class="img-profile rounded-circle" src="{{ app.user.getAvatarUrl | imagine_filter('avatar_thumb') }}" alt="{{ app.user.name }}">
+								<img class="img-profile rounded-circle" src="{{ app.user.getAvatarUrl }}" style="width: 40px; height: 40px;" alt="{{ app.user.name }}"> 
 							{% else %}
 								<img class="img-profile rounded-circle" src="{{ app.user.getAvatarUrl }}" alt="{{ app.user.name }}">
 							{% endif %}
@@ -41,7 +41,7 @@
 							<li>
 								<div class="dropdown-header text-center">
 									{% if app.user.avatar %}
-										<img class="img-profile rounded-circle" src="{{ app.user.getAvatarUrl | imagine_filter('avatar_thumb') }}" alt="{{ app.user.name }}">
+										<img class="img-profile rounded-circle" src="{{ app.user.getAvatarUrl  }}" style="width: 40px; height: 40px;" alt="{{ app.user.name }}">
 									{% else %}
 										<img class="img-profile rounded-circle" src="{{ app.user.getAvatarUrl }}" alt="{{ app.user.name }}">
 									{% endif %}
