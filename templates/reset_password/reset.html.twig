@@ -1,0 +1,51 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Reset Your Password{% endblock %}
+
+{% block body %}
+<section class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 m-auto">
+            <div class="login-container">
+                <h3 class="login-title">Reset Your Password</h3>
+                <p class="light-300">
+                    Please enter your new password below to reset your account password.
+                </p>
+
+                {{ form_start(resetForm, {'attr': {'class': 'contact-form row'}}) }}
+
+                <!-- New Password Field -->
+                <div class="col-12 mb-4">
+                    <div class="form-floating">
+                        {{ form_widget(resetForm.plainPassword.first, {
+                            'attr': {'class': 'form-control form-control-lg light-300', 'placeholder': 'New Password'}
+                        }) }}
+                        <label for="{{ resetForm.plainPassword.first.vars.id }}" class="light-300">New Password</label>
+                    </div>
+                    {{ form_errors(resetForm.plainPassword.first) }}
+                </div>
+
+                <!-- Confirm Password Field -->
+                <div class="col-12 mb-4">
+                    <div class="form-floating">
+                        {{ form_widget(resetForm.plainPassword.second, {
+                            'attr': {'class': 'form-control form-control-lg light-300', 'placeholder': 'Confirm Password'}
+                        }) }}
+                        <label for="{{ resetForm.plainPassword.second.vars.id }}" class="light-300">Confirm Password</label>
+                    </div>
+                    {{ form_errors(resetForm.plainPassword.second) }}
+                </div>
+
+                <!-- Submit Button -->
+                <div class="col-12 text-end">
+                    <button type="submit" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">
+                        Reset Password
+                    </button>
+                </div>
+
+                {{ form_end(resetForm) }}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

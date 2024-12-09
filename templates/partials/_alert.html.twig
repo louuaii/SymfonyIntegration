@@ -1,0 +1,10 @@
+<script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    toastr["{{ type }}"]("{{ message|e('js') }}");
+                {% endfor %}
+            {% endfor %}
+        });
+</script>

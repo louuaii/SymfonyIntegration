@@ -1,0 +1,89 @@
+<nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
+	<div class="container d-flex justify-content-between align-items-center">
+		<a class="navbar-brand h1" href="{{ path('app_home') }}">
+			<img src="{{ asset('build/images/logo.png') }}" alt="Logo" style="height: 50px; margin-right: 8px;">
+			<span class="text-dark h4">E-</span>
+			<span class="text-primary h4">Learning</span>
+		</a>
+
+		<!-- Toggle Button for Mobile -->
+		<button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between" id="navbar-toggler-success">
+			<div class="flex-fill mx-xl-5 mb-2">
+				<ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
+					<li class="nav-item">
+						<a class="nav-link btn-outline-primary rounded-pill px-3" href="{{ path('app_about') }}">About</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link btn-outline-primary rounded-pill px-3" href="">internships</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link btn-outline-primary rounded-pill px-3" href="{{ path('app_contact') }}">Contact</a>
+					</li>
+				</ul>
+			</div>
+			<!-- Account Dropdown -->
+			<div class="navbar align-self-center d-flex">
+				<div class="dropdown">
+					{% if app.user %}
+						<a class="nav-link d-flex align-items-center dropdown-toggle" href="#" id="customAccountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							{% if app.user.avatar %}
+								<img class="img-profile rounded-circle" src="{{ app.user.getAvatarUrl | imagine_filter('avatar_thumb') }}" alt="{{ app.user.name }}">
+							{% else %}
+								<img class="img-profile rounded-circle" src="{{ app.user.getAvatarUrl }}" alt="{{ app.user.name }}">
+							{% endif %}
+							<span class="d-none d-lg-inline text-primary fw-bold">{{ app.user.fullname }}</span>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="customAccountDropdown">
+							<li>
+								<div class="dropdown-header text-center">
+									{% if app.user.avatar %}
+										<img class="img-profile rounded-circle" src="{{ app.user.getAvatarUrl | imagine_filter('avatar_thumb') }}" alt="{{ app.user.name }}">
+									{% else %}
+										<img class="img-profile rounded-circle" src="{{ app.user.getAvatarUrl }}" alt="{{ app.user.name }}">
+									{% endif %}
+									<h6 class="mb-0">{{app.user.fullname}}</h6>
+									<small class="text-muted">{{app.user.useridentifier}}</small>
+								</div>
+							</li>
+							<li><hr class="dropdown-divider"></li>
+							<li>
+								<a class="dropdown-item" href="{{ path('app_user_show', {id: app.user.id}) }}">
+									<i class="bx bx-user me-2"></i>
+									Profile</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path('app_home_dashboard') }}">
+									<i class="bx bx-cog me-2"></i>
+									Settings</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="javascript::void(0)" onclick="event.preventDefault();document.getElementById('js-logout-form').submit();">
+										<i class="bx bx-log-out me-2"></i>
+										Logout
+								</a>
+							</li>
+						</ul>
+					{% else %}
+						<a class="nav-link d-flex align-items-center dropdown-toggle" href="#" id="customAccountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<i class='bx bx-user-circle bx-sm text-primary'></i>
+						</a>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="customAccountDropdown">
+						<li>
+							<a class="dropdown-item" href="{{ path('app_login') }}">
+								<i class="bx bx-user me-2"></i>
+								Sign in</a>
+						</li>
+					</ul>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+    	<form id="js-logout-form" action="{{ path('app_logout') }}" method="post" style="display: hidden;">
+		<input type="hidden" name="_csrf_token" value="{{ csrf_token('logout') }}">
+	</form>
+</div></nav>

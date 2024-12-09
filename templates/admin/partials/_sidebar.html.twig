@@ -1,0 +1,53 @@
+<!-- Sidebar -->
+<ul
+	class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+	<!-- Sidebar - Brand -->
+	<a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ path('app_home_dashboard') }}">
+		<div class="sidebar-brand-icon rotate-n-15">
+			<img src="{{ asset('build/images/logo.png') }}" alt="Logo" style="height: 50px; margin-right: 8px;">
+		</div>
+	</a>
+
+	<div class="text-white mx-3">
+	E-Learning
+	</div>
+</a>
+
+<!-- Divider -->
+<hr
+class="sidebar-divider my-0">
+
+<!-- Nav Item - Dashboard -->
+<li class="nav-item {% if app.request.attributes.get('_route') == 'app_home_dashboard' %}active{% endif %}">
+	<a class="nav-link" href="{{path('app_home_dashboard') }}">
+		<i class="fas fa-fw fa-tachometer-alt"></i>
+		<span>Dashboard</span>
+	</a>
+</li>
+
+<!-- Divider -->
+<hr
+class="sidebar-divider">
+
+<!-- Nav Item - Pages Collapse Menu -->
+{% if is_granted('ROLE_ADMIN') %}
+	<li class="nav-item {% if app.request.attributes.get('_route') == 'app_user_index' %}active{% endif %}">
+		<a class="nav-link" href="{{ path('app_user_index') }}">
+			<i class="fas fa-users fa-sm"></i>
+			<span>Users</span>
+		</a>
+	</li>
+{% endif %}
+
+
+<!-- Divider -->
+<hr
+class="sidebar-divider d-none d-md-block">
+
+<!-- Sidebar Toggler (Sidebar) -->
+<div class="text-center d-none d-md-inline">
+	<button class="rounded-circle border-0" id="sidebarToggle"></button>
+</div>
+
+<!-- Sidebar Message --></ul><!-- End of Sidebar -->

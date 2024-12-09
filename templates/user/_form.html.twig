@@ -1,0 +1,85 @@
+{{ form_start(form, {'attr': {'id': 'user-form'}}) }}
+
+<div class="mb-3">
+	{{ form_label(form.name) }}
+	{{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+</div>
+
+<div class="mb-3">
+	{{ form_label(form.last_name) }}
+	{{ form_widget(form.last_name, {'attr': {'class': 'form-control'}}) }}
+</div>
+
+{% if not isOwnProfile|default(false) %}
+	<div class="mb-3">
+		{{ form_label(form.email) }}
+		{{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+	</div>
+
+	<div class="mb-3">
+		{{ form_label(form.password) }}
+		{% if  button_label is defined%}
+			<br><small>Leave empty to keep the same</small>
+		{% endif %}
+		{{ form_widget(form.password, {'attr': {'class': 'form-control', 'placeholder': button_label is defined ? '': 'Enter a secure password...'}}) }}
+	</div>
+
+{% endif %}
+
+<div class="mb-3">
+	{{ form_label(form.phone) }}
+	{{ form_widget(form.phone, {'attr': {'class': 'form-control'}}) }}
+</div>
+
+<div class="mb-3">
+	<div class="mb-3">
+		{{ form_label(form.roles) }}
+		{{ form_widget(form.roles) }}
+	</div>
+</div>
+
+<div id="teacher-fields" class="role-fields d-none">
+	<div class="mb-3">
+		{{ form_label(form.departement) }}
+		{{ form_widget(form.departement, {'attr': {'class': 'form-control'}}) }}
+	</div>
+
+	<div class="mb-3">
+		{{ form_label(form.speciality) }}
+		{{ form_widget(form.speciality, {'attr': {'class': 'form-control'}}) }}
+	</div>
+</div>
+
+<div id="student-fields" class="role-fields d-none">
+	<div class="mb-3">
+		{{ form_label(form.cvFile) }}
+		{% if  button_label is defined%}
+			<small>Leave empty to keep the existing CV.</small>
+		{% endif %}
+		{{ form_widget(form.cvFile, {'attr': {'class': 'form-control', 'accept': '.pdf,.doc,.docx'}}) }}
+	</div>
+
+	<div class="mb-3">
+		{{ form_label(form.skills) }}
+		{{ form_widget(form.skills, {'attr': {'class': 'form-control'}}) }}
+	</div>
+
+	<div class="mb-3">
+		{{ form_label(form.progression) }}
+		{{ form_widget(form.progression, {'attr': {'class': 'form-control'}}) }}
+	</div>
+</div>
+
+<div class="mb-3">
+	{{ form_label(form.avatarFile) }}
+	{{ form_widget(form.avatarFile, {'attr': {'class': 'form-control', 'accept': '.jpg,.jpeg,.png'}}) }}
+</div>
+
+<button type="submit" class="btn btn-success mr-1">{{ button_label|default('Save') }}</button>
+{% if isOwnProfile|default(false)  %}
+	<a href="{{ path('app_home_dashboard') }}" class="btn btn-secondary">Back to Home</a>
+{% else %}
+	<a href="{{ path('app_user_index') }}" class="btn btn-secondary">Back to list</a>
+{% endif %}
+
+{{ form_end(form) }}

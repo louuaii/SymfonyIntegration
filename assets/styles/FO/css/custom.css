@@ -1,0 +1,49 @@
+/*
+Custom CSS for TemplateMo 561 Purple Buzz
+
+https://templatemo.com/tm-561-purple-buzz
+
+*/
+.login-container {
+    max-width: 500px; /* Limiter la largeur */
+    margin: 0 auto; /* Centrer horizontalement */
+    padding: 2rem; /* Ajouter de l'espace interne */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+}
+
+.form-floating label {
+    font-size: 0.9rem; /* Ajuster la taille du label */
+}
+
+.login-title {
+    font-size: 1.5rem; /* Taille plus grande pour le titre */
+    text-align: center; /* Centrer le texte */
+    margin-bottom: 1.5rem; /* Espacement sous le titre */
+}
+
+.forgot-password-link {
+    font-size: 0.85rem; /* Taille réduite */
+}
+
+.dropdown-menu {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-header {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}

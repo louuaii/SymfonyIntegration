@@ -1,0 +1,12 @@
+{% extends 'layouts/admin/base.html.twig' %}
+{% block title %}{{ isOwnProfile ? 'Edit My profil' : 'Edit User #' ~ user.name  }}{% endblock %}
+
+{% block body %}
+	<h1>{{ isOwnProfile ? 'Edit profil' : 'Edit User'}}</h1>
+	{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+	{{ include("user/_form.html.twig",{button_label: 'Edit'}) }}
+	<script src="{{ asset('build/user-form.js') }}"></script>
+
+
+{% endblock %}

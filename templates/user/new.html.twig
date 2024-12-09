@@ -1,0 +1,12 @@
+{% extends 'layouts/admin/base.html.twig' %}
+{% block title 'Create User' %}
+
+{% block body %}
+    <h1>Create User</h1>
+    {% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+    {% include("user/_form.html.twig") %}
+    <script src="{{ asset('build/user-form.js') }}"></script>
+
+
+{% endblock %}

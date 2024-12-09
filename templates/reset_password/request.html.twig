@@ -1,0 +1,43 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title %}Reset Your Password{% endblock %}
+
+{% block body %}
+<section class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 m-auto">
+            <div class="login-container">
+                <h3 class="login-title">Reset Your Password</h3>
+
+                {% for flash_error in app.flashes('reset_password_error') %}
+                    <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                {% endfor %}
+
+                <p class="light-300">
+                    Enter your email address, and we will send you a link to reset your password.
+                </p>
+
+                {{ form_start(requestForm, {'attr': {'class': 'contact-form row'}}) }}
+
+                <div class="col-12 mb-4">
+                    <div class="form-floating">
+                        {{ form_widget(requestForm.email, {
+                            'attr': {'class': 'form-control form-control-lg light-300', 'placeholder': 'Email'}
+                        }) }}
+                        <label for="{{ requestForm.email.vars.id }}" class="light-300">Email</label>
+                    </div>
+                    {{ form_errors(requestForm.email) }}
+                </div>
+
+                <div class="col-12 text-end">
+                    <button type="submit" class="btn btn-secondary rounded-pill px-md-5 px-4 py-2 radius-0 text-light light-300">
+                        Send Reset Link
+                    </button>
+                </div>
+
+                {{ form_end(requestForm) }}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
